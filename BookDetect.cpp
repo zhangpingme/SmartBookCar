@@ -1,25 +1,18 @@
-/*******************************************************************************
-	µ±ÍÆÊé°å·µ³Ì¹éÁãÖ®ºó£¬°²×°ÔÚµ¼Êé°åÏÂÃæµÄ±ÜÕÏ´«¸ÐÆ÷¿ªÊ¼¼ì²âÊÇ·ñÓÐÊé´Ó·Ö¼ðÏµÍ³ÖÐ½øÈëµ½Ð¡³µÄÚ
-ÈôÓÐ£¬Ôò±ÜÕÏ´«¸ÐÆ÷·µ»ØÒ»¸öÐÅºÅ£¬´ýÒ»¶¨Ê±¼äºó£¬ÍÆÊé°å¿ªÊ¼¹¤×÷¡£
-	ÆäÊµ×îºÃµÄ·½Ê½ÊÇÔÚÍÆÊé°åÏÂ·½°²×°Ò»¸öÖØÁ¦´«¸ÐÆ÷£¬¼ì²âÊÇ·ñÓÐÊé£¬µ«ÓÉÓÚÍÆÊé°åÏÂ·½µÄ¿Õ¼äÓÐÏÞ£¬ÎÞ·¨°²×°£¬
-½ñºó¸Ä½ø»úÆ÷µÄÊ±ºò¿ÉÒÔ¿¼ÂÇ¡£
-	Date:    2017.07.20
-	Version: V1.0
+ï»¿/*******************************************************************************
+å½“æŽ¨ä¹¦æ¿è¿”ç¨‹å½’é›¶ä¹‹åŽï¼Œå®‰è£…åœ¨å¯¼ä¹¦æ¿ä¸‹é¢çš„é¿éšœä¼ æ„Ÿå™¨å¼€å§‹æ£€æµ‹æ˜¯å¦æœ‰ä¹¦ä»Žåˆ†æ‹£ç³»ç»Ÿä¸­è¿›å…¥åˆ°å°è½¦å†…ã€‚
+è‹¥æœ‰ä¹¦è¿›å…¥ï¼Œåˆ™é¿éšœä¼ æ„Ÿå™¨è¿”å›žä¸€ä¸ªä¿¡å·ï¼Œå¾…ä¸€å®šæ—¶é—´åŽï¼ŒæŽ¨ä¹¦æ¿å¼€å§‹å·¥ä½œã€‚
 *******************************************************************************/
 #include "BookDetect.h"  
 
-void BookDetect_init()  //´«¸ÐÆ÷³õÊ¼»¯
+void BookDetect_init()  //é¿éšœä¼ æ„Ÿå™¨åˆå§‹åŒ–
 {
-	pinMode(PinBookDetect, INPUT); //¼ÇµÃ¸Ä³ÉÊäÈëÄ£Ê½
+	pinMode(PinBookDetect, INPUT); 
 }
 
-bool Book_Detect()   //´«¸ÐÆ÷¿ªÊ¼¹¤×÷
+bool Book_Detect()   //ä¼ æ„Ÿå™¨å¼€å§‹å·¥ä½œ
 {
-	if (analogRead(PinBookDetect) < 100)   //Èç¹û¼ì²âµ½ÉÏ·½ÓÐÎïÌå¾­¹ý£¬±ÜÕÏ´«¸ÐÆ÷Êä³öÖµÃ÷ÏÔ±äÐ¡
-	{
-		Serial.println("One book has gone!"); 
+	if (analogRead(PinBookDetect) < 100)   //å¦‚æžœæ£€æµ‹åˆ°ä¸Šæ–¹æœ‰ç‰©ä½“ç»è¿‡ï¼Œé¿éšœä¼ æ„Ÿå™¨è¾“å‡ºå€¼æ˜Žæ˜¾å˜å°ï¼ˆåˆå§‹ä¸º255ï¼‰
 		return true;
-	}
 	else
 		return false;
 }

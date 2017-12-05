@@ -1,6 +1,12 @@
+ï»¿/*******************************************************************************
+ç›´æµç”µæœºçš„ç›¸å…³æ“ä½œå‡½æ•°å­˜æ”¾åœ¨æ­¤ã€‚
+1ã€DC_BigæŒ‡ç”¨äºå†…ç®±å‡é™çš„å¸¦æŠ±é—¸çš„ç›´æµç”µæœºï¼›
+2ã€DC_LeftæŒ‡ç”¨äºé©±åŠ¨å·¦è½®è¿åŠ¨çš„ç›´æµç”µæœºï¼›
+2ã€DC_RightæŒ‡ç”¨äºé©±åŠ¨å³è½®è¿åŠ¨çš„ç›´æµç”µæœºã€‚
+*******************************************************************************/
 #include "DCMotor.h"
 
-void DCMotor_init()
+void DCMotor_init()      //ä¸‰ä¸ªç›´æµç”µæœºéƒ½åˆå§‹åŒ–
 {
 	pinMode(DC_Big_Pin1, OUTPUT);
 	pinMode(DC_Big_Pin2, OUTPUT);
@@ -13,30 +19,30 @@ void DCMotor_init()
 	pinMode(DC_Right_ENA, OUTPUT);
 }
 
-void DCMotor_Big_Move(int speed, bool DIR)         //Éı½µµÄÖ±Á÷´óµç»úµÄµ÷ËÙºÍµ÷Ïò
+void DCMotor_Big_Move(int speed, bool DIR)    //å‡é™ç›´æµç”µæœºçš„è°ƒé€Ÿå’Œè°ƒå‘ï¼Œspeedç”¨äºè®¾ç½®é€Ÿåº¦å¤§å°ï¼ŒDIRè®¾ç½®ä¸Šå‡æˆ–ä¸‹é™ã€‚
 {
 	analogWrite(DC_Big_ENA, speed);
-	if (DIR == true)                                              //true±íÊ¾·½ÏòÏòÉÏ
+	if (DIR == true)                          //trueè¡¨ç¤ºæ–¹å‘å‘ä¸‹
 	{
 		digitalWrite(DC_Big_Pin1, 0);
 		digitalWrite(DC_Big_Pin2, 1);
 	}
-	else                                                              //false±íÊ¾·½ÏòÏòÏÂ
+	else                                      //falseè¡¨ç¤ºæ–¹å‘å‘ä¸Š
 	{
 		digitalWrite(DC_Big_Pin1, 1);
 		digitalWrite(DC_Big_Pin2, 0);
 	}
 }
 
-void DCMotor_Big_Stop(bool flag)                         //flag=true  µç»úÉ²³µ   ;    flag=false   µç»ú½ûÄÜ
+void DCMotor_Big_Stop(bool flag)             //åœæ­¢å‡é™ç›´æµç”µæœºï¼Œä¸€èˆ¬ä½¿ç”¨flag=falseå°±å¯ä»¥äº†ã€‚
 {
-	if (flag == true)
+	if (flag == true)                        //flag=true ç”µæœºåˆ¹è½¦ 
 	{
 		digitalWrite(DC_Big_ENA, HIGH);
 		digitalWrite(DC_Big_Pin1, 0);
 		digitalWrite(DC_Big_Pin2, 0);
 	}
-	else
+	else                                      //flag=false ç”µæœºç¦èƒ½
 	{
 		digitalWrite(DC_Big_ENA, LOW);
 		digitalWrite(DC_Big_Pin1, 1);
@@ -44,10 +50,10 @@ void DCMotor_Big_Stop(bool flag)                         //flag=true  µç»úÉ²³µ  
 	}
 }
 
-void DCMotor_Left_Move(int speed, bool DIR)         //×óÂÖµç»úµÄµ÷ËÙºÍµ÷Ïò
+void DCMotor_Left_Move(int speed, bool DIR)   //å·¦è½®ç”µæœºçš„è°ƒé€Ÿå’Œè°ƒå‘
 {
 	analogWrite(DC_Left_ENA, speed);
-	if (DIR == true)                                               //true±íÊ¾Ç°½ø£¬false±íÊ¾ºóÍË
+	if (DIR == true)                          //trueè¡¨ç¤ºå‰è¿›ï¼Œfalseè¡¨ç¤ºåé€€
 	{
 		digitalWrite(DC_Left_Pin1, 0);
 		digitalWrite(DC_Left_Pin2, 1);
@@ -59,15 +65,15 @@ void DCMotor_Left_Move(int speed, bool DIR)         //×óÂÖµç»úµÄµ÷ËÙºÍµ÷Ïò
 	}
 }
 
-void DCMotor_Left_Stop(bool flag)                         //flag=true  µç»úÉ²³µ   ;    flag=false   µç»ú½ûÄÜ
+void DCMotor_Left_Stop(bool flag)             //åœæ­¢å·¦è½®ç›´æµç”µæœºï¼Œä¸€èˆ¬ä½¿ç”¨flag=falseå°±å¯ä»¥äº†ã€‚
 {
-	if (flag == true)
+	if (flag == true)                         //flag=true ç”µæœºåˆ¹è½¦ 
 	{
 		digitalWrite(DC_Left_ENA, HIGH);
 		digitalWrite(DC_Left_Pin1, 0);
 		digitalWrite(DC_Left_Pin2, 0);
 	}
-	else
+	else                                      //flag=false ç”µæœºç¦èƒ½
 	{
 		digitalWrite(DC_Left_ENA, LOW);
 		digitalWrite(DC_Left_Pin1, 1);
@@ -75,10 +81,10 @@ void DCMotor_Left_Stop(bool flag)                         //flag=true  µç»úÉ²³µ 
 	}
 }
 
-void DCMotor_Right_Move(int speed, bool DIR)       //ÓÒÂÖµç»úµÄµ÷ËÙºÍµ÷Ïò
+void DCMotor_Right_Move(int speed, bool DIR)   //å³è½®ç”µæœºçš„è°ƒé€Ÿå’Œè°ƒå‘
 {
 	analogWrite(DC_Right_ENA, speed);
-	if (DIR == true)                                               //true±íÊ¾Ç°½ø£¬false±íÊ¾ºóÍË
+	if (DIR == true)                           //trueè¡¨ç¤ºå‰è¿›ï¼Œfalseè¡¨ç¤ºåé€€
 	{
 		digitalWrite(DC_Right_Pin1, 1);
 		digitalWrite(DC_Right_Pin2, 0);
@@ -90,15 +96,15 @@ void DCMotor_Right_Move(int speed, bool DIR)       //ÓÒÂÖµç»úµÄµ÷ËÙºÍµ÷Ïò
 	}
 }
 
-void DCMotor_Right_Stop(bool flag)                       //flag=true  µç»úÉ²³µ   ;    flag=false   µç»ú½ûÄÜ
+void DCMotor_Right_Stop(bool flag)              //åœæ­¢å³è½®ç›´æµç”µæœºï¼Œä¸€èˆ¬ä½¿ç”¨flag=falseå°±å¯ä»¥äº†ã€‚
 {
-	if (flag == true)
+	if (flag == true)                           //flag=true ç”µæœºåˆ¹è½¦ 
 	{
 		digitalWrite(DC_Right_ENA, HIGH);
 		digitalWrite(DC_Right_Pin1, 0);
 		digitalWrite(DC_Right_Pin2, 0);
 	}
-	else
+	else                                        //flag=false ç”µæœºç¦èƒ½
 	{
 		digitalWrite(DC_Right_ENA, LOW);
 		digitalWrite(DC_Right_Pin1, 1);
@@ -106,55 +112,54 @@ void DCMotor_Right_Stop(bool flag)                       //flag=true  µç»úÉ²³µ  
 	}
 }
 
-void go_straight()//Ö±×ß
+//ä¸‹é¢æ˜¯å°è½¦è¿åŠ¨æ—¶æ–¹å‘æ§åˆ¶çš„å‡½æ•°ï¼Œé€šè¿‡å·¦å³è½®é€Ÿåº¦ä¸åŒï¼Œå®ç°å·®é€Ÿè½¬å‘
+void go_straight()  //å°è½¦å‘å‰ç›´çº¿è¡Œé©¶ï¼Œä¸¤è¾¹è½¦è½®å‡æœ€å¤§é€Ÿåº¦è¿è¡Œ
 {
-	DCMotor_Left_Move(255, true);
-	DCMotor_Right_Move(255, true);
-}
-
-void go_back()    //µ¹ÍË
-{
-	DCMotor_Left_Move(Car_LowMid_Speed, false);
-	DCMotor_Right_Move(Car_LowMid_Speed, false);
-}
-void big_left()     //Ïò×ó×ª´óÍä
-{
-	DCMotor_Left_Move(0,true);
+	DCMotor_Left_Move(Car_High_Speed, true);
 	DCMotor_Right_Move(Car_High_Speed, true);
 }
-void big_right()	//ÏòÓÒ×ª´óÍä
+void go_back()      //å°è½¦å‘åç›´çº¿å€’é€€ï¼Œä¸¤è¾¹è½¦è½®å‡æœ€å¤§é€Ÿåº¦è¿è¡Œ
 {
-	DCMotor_Right_Move(0, true);
+	DCMotor_Left_Move(Car_High_Speed, false);
+	DCMotor_Right_Move(Car_High_Speed, false);
+}
+void big_left()     //å‘å·¦è½¬å¤§å¼¯
+{
+	DCMotor_Left_Move(Car_Low_Speed, true);
+	DCMotor_Right_Move(Car_High_Speed, true);
+}
+void big_right()	//å‘å³è½¬å¤§å¼¯
+{
+	DCMotor_Right_Move(Car_Low_Speed, true);
 	DCMotor_Left_Move(Car_High_Speed, true);
 }
-void small_left()    //Ïò×ó×ªĞ¡Íä
+void bigMid_left()     //å‘å·¦è½¬å¤§å¼¯
 {
-	DCMotor_Left_Move(0, true);
+	DCMotor_Left_Move(Car_LowMid_Speed, true);
+	DCMotor_Right_Move(Car_High_Speed, true);
+}
+void bigMid_right()	//å‘å³è½¬å¤§å¼¯
+{
+	DCMotor_Right_Move(Car_LowMid_Speed, true);
+	DCMotor_Left_Move(Car_High_Speed, true);
+}
+void small_left()    //å‘å·¦è½¬å°å¼¯
+{
+	DCMotor_Left_Move(Car_LowMid_Speed, true);
+	DCMotor_Right_Move(Car_Mid_Speed, true);
+}
+void small_right()   //å‘å³è½¬å°å¼¯
+{
+	DCMotor_Right_Move(Car_LowMid_Speed, true);
+	DCMotor_Left_Move(Car_Mid_Speed, true);
+}
+void smallMid_left()    //å‘å·¦è½¬å°å¼¯
+{
+	DCMotor_Left_Move(Car_LowMid_Speed, true);
 	DCMotor_Right_Move(Car_HighMid_Speed, true);
 }
-void small_right()   //ÏòÓÒ×ªĞ¡Íä
+void smallMid_right()   //å‘å³è½¬å°å¼¯
 {
 	DCMotor_Right_Move(Car_LowMid_Speed, true);
 	DCMotor_Left_Move(Car_HighMid_Speed, true);
-}
-
-void LoadBook()             //ºò³µÇøµÄĞ¡³µ½Óµ½»»³µÖ¸Áî£¬Ç°Íù½ÓÊéÇø½ÓÊé
-{
-	go_straight();
-}
-
-void UnLoadBook()        //½ÓÊéÇøµÄĞ¡³µ×°ÂúÊéºó£¬Ç°ÍùĞ¶ÔØÇøĞ¶Êé
-{
-	go_back();
-}
-
-void GoWait()               //Ğ¶ÔØÇøµÄĞ¡³µĞ¶ÍêÊéºó£¬Ç°Íùºò³µÇøµÈ´ı
-{
-	//go_back();
-}
-
-void Car_Stop()
-{
-	DCMotor_Left_Stop(false);
-	DCMotor_Right_Stop(false);
 }
